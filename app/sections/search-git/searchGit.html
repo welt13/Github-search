@@ -1,0 +1,41 @@
+<div class="search-git">
+    <form name="searchGitForm" role="form" autocomplete="off">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <span class="glyphicon glyphicon-search float-position"></span>
+                <input type="text" ng-model="framework" class="form-control" placeholder="framework" ng-keypress="$event.keyCode == 13  && getRepositoriesGit(framework)">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table">
+                <thead class="head">
+                    <tr>
+                        <th class="col th-name">
+                            <span>Nombre Repositorio</span>
+                        </th>
+                        <th class="col th-url">
+                            <span>URL</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="repository in repositories track by $index" ng-class="{'col-par': $index%2 !== 0}">
+                        <td class="col">
+                            <span>{{repository.name}}</span>
+                        </td>
+                        <td class="col">
+                            <span>{{repository.html_url}}</span>
+                        </td>
+                    </tr>
+                    <tr ng-if="repositories.length === 0">
+                        <td colspan="2">
+                            <span>No se han encontrado frameworks</span>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
